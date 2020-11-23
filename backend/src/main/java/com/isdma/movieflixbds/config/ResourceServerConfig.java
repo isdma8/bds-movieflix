@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -32,9 +33,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };//Liberado para todos estes links
 	
-	//private static final String[] OPERATOR_OR_ADMIN= { "/products/**", "/categories/**" }; //todos os pedidos acima do link base são rotas sem ser get entao ficam disponiveis para estes, ** é tudo
+	private static final String[] VISITOR_OR_MEMBER= { "/movies/**", "/reviews" }; //todos os pedidos acima do link base são rotas sem ser get entao ficam disponiveis para estes, ** é tudo
 	
-	//private static final String[] ADMIN = { "/users/**" };
+	private static final String[] MEMBER = { "/reviews/**" };
 	
 	
 	@Override
@@ -55,9 +56,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll() //Não se exige login a estes
-		//.antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).permitAll() //libetar apenas o metodo get nestes caras
-		//.antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR", "ADMIN")//as rotas deste role pode acessar quem tiver algum destes papeis, no bd ta ROLE_PAPEL, aqui so basta o PAPEL
-		//.antMatchers(ADMIN).hasAnyRole("ADMIN") //so pode andar em admi quem tiver logado como admin
+		.antMatchers(HttpMethod.GET, VISITOR_OR_MEMBER).permitAll() //libetar apenas o metodo get nestes caras
+		.antMatchers(VISITOR_OR_MEMBER).hasAnyRole("VISITOR", "MEMBER")//as rotas deste role pode acessar quem tiver algum destes papeis, no bd ta ROLE_PAPEL, aqui so basta o PAPEL
+		.antMatchers(MEMBER).hasAnyRole("MEMBER") //so pode andar em admi quem tiver logado como admin
 		.anyRequest().authenticated(); //para qualquer outra rota tem de tar logado nao importando o perfil de user
 	
 		http.cors().configurationSource(corsConfigurationSource()); //basta isto para chamar a conf de cors que definimos abaixo

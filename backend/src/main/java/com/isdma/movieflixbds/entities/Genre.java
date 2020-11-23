@@ -21,6 +21,7 @@ public class Genre implements Serializable{
 	private Long id;
 	private String name;
 	
+
 	@OneToMany(mappedBy = "genre")
 	private Set<Movie> movies = new HashSet<>();
 	
@@ -51,10 +52,6 @@ public class Genre implements Serializable{
 
 	public Set<Movie> getMovies() {
 		return movies;
-	}
-
-	public void setMovies(Set<Movie> movies) {
-		this.movies = movies;
 	}
 
 	@Override

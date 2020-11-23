@@ -13,7 +13,7 @@ public class ReviewDTO implements Serializable{
 
 	private Long id;
 	
-	@NotBlank(message= "Campo de texto da avaliação não pode ser vazio")
+	@NotBlank(message= "Campo de texto da avaliação não pode ser vazio!")
 	private String text;
 
 	private Movie movie;
