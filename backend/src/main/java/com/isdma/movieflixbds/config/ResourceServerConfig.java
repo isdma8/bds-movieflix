@@ -33,7 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };//Liberado para todos estes links
 	
-	private static final String[] VISITOR_OR_MEMBER= { "/movies/**", "/reviews" }; //todos os pedidos acima do link base são rotas sem ser get entao ficam disponiveis para estes, ** é tudo
+	private static final String[] VISITOR_OR_MEMBER= { "/movies/**", "/reviews/**" }; //todos os pedidos acima do link base são rotas sem ser get entao ficam disponiveis para estes, ** é tudo
 	
 	private static final String[] MEMBER = { "/reviews/**" };
 	

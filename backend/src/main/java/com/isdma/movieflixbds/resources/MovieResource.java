@@ -38,5 +38,13 @@ public class MovieResource {
 			return ResponseEntity.ok(list);
 	
 	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<MovieDTO> findById(@PathVariable Long id) {
+
+		MovieDTO dto = service.findById(id);
+		return ResponseEntity.ok().body(dto);
+
+	}
 
 }

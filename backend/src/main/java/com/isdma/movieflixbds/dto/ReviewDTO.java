@@ -16,26 +16,27 @@ public class ReviewDTO implements Serializable{
 	@NotBlank(message= "Campo de texto da avaliação não pode ser vazio!")
 	private String text;
 
-	private Movie movie;
+	private Long movieId;
+	
+	private Long userId;
 
-	private User user;
 	
 	public ReviewDTO() {
 		
 	}
 
-	public ReviewDTO(Long id, String text, Movie movie, User user) {
+	public ReviewDTO(Long id, String text, Long movieId, Long userId) {
 		this.id = id;
 		this.text = text;
-		this.movie = movie;
-		this.user = user;
+		this.movieId = movieId;
+		this.userId = userId;
 	}
 	
 	public ReviewDTO(Review entity) {
 		this.id = entity.getId();
 		this.text = entity.getText();
-		this.movie = entity.getMovie();
-		this.user = entity.getUser();
+		this.movieId = entity.getMovie().getId();
+		this.userId = entity.getUser().getId();
 	}
 
 	public Long getId() {
@@ -54,20 +55,22 @@ public class ReviewDTO implements Serializable{
 		this.text = text;
 	}
 
-	public Movie getMovie() {
-		return movie;
+
+	public Long getMovieId() {
+		return movieId;
 	}
 
-	public void setMovie(Movie movie) {
-		this.movie = movie;
+	public void setMovieId(Long movieId) {
+		this.movieId = movieId;
 	}
 
-	public User getUser() {
-		return user;
+
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public static long getSerialversionuid() {
