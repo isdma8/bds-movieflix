@@ -1,14 +1,16 @@
 package com.isdma.movieflixbds.resources;
 
+import java.net.URI;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.isdma.movieflixbds.dto.ReviewDTO;
 import com.isdma.movieflixbds.services.ReviewService;
@@ -17,9 +19,19 @@ import com.isdma.movieflixbds.services.ReviewService;
 @RequestMapping(value = "/reviews")
 public class ReviewResource {
 
-	/*@Autowired 
+	@Autowired 
 	private ReviewService service;
 	
+	@PostMapping // Post para inserir
+	public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto) {
+		dto = service.insert(dto);
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
+
+		return ResponseEntity.created(uri).body(dto);
+	}
+	
+	/*
 	@GetMapping
 	public ResponseEntity<Page<ReviewDTO>> findAllByMovieId(
 			@RequestParam(value = "movieId", defaultValue = "0") Long movieId,

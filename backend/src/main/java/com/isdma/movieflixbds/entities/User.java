@@ -24,6 +24,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 @Entity
 @Table(name = "tb_user")
 public class User implements UserDetails, Serializable{
@@ -169,6 +170,12 @@ public class User implements UserDetails, Serializable{
 		return true;
 	}
 	
-	
+	public boolean hasHole(String roleName) {
+		for (Role role : roles) {
+			if(role.getAuthority().equals(roleName)) return true;
+		}
+		
+		return false;
+	}
 	
 }
