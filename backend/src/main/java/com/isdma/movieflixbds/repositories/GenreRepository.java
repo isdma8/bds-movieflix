@@ -11,6 +11,7 @@ import com.isdma.movieflixbds.entities.Genre;
 @Repository
 public interface GenreRepository extends JpaRepository<Genre, Long>{
 
-	@Query("SELECT obj FROM Genre obj INNER JOIN obj.movies movs ORDER BY movs.title")
+	@Query("SELECT DISTINCT obj FROM Genre obj INNER JOIN obj.movies movs ORDER BY movs.title ASC")
+	//@Query("SELECT DISTINCT obj FROM Genre obj JOIN FETCH obj.movies WHERE obj IN :genres")
 	Page<Genre> findAllGenreMoviesByTitle(Pageable pageable);
 }

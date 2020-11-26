@@ -24,6 +24,7 @@ public class GenreDTO implements Serializable{
 	}
 	
 	public GenreDTO(Genre entity) {
+		id = entity.getId();
 		name = entity.getName();
 		
 		entity.getMovies().forEach(mov -> this.movies.add(new MovieDTO(mov)));

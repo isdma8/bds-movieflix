@@ -13,7 +13,7 @@ import com.isdma.movieflixbds.entities.Movie;
 public interface MovieRepository extends JpaRepository<Movie, Long>{
 
 	@Query("SELECT obj FROM Movie obj WHERE "
-			+ ":genre IS NULL OR obj.genre = :genre")
+			+ ":genre IS NULL OR obj.genre = :genre ORDER BY obj.title ASC")
 	Page<Movie> findAllPagedByGenre(Genre genre, Pageable pageable);
 	
 }
