@@ -4,7 +4,7 @@
 O sistema MovieFlix consiste em um banco de filmes, os quais podem ser listados e avaliados pelos utilizadores. 
 Utilizadores autenticados que podem ser visitantes (VISITOR) e membros (MEMBER). Apenas usuários membros podem inserir avaliações aos filmes no sistema.
 
-![alt text](https://imgbox.com/GJTYvZKY)
+![alt text](https://i.imgur.com/UXXps8r.png)
 
 ##Tecnologias
 
