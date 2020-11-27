@@ -1,12 +1,12 @@
-### Bootcamp DevSuperior: Desafio 4 - Cap. 8 - Projeto Movieflix Backend
+# Projeto Movieflix Backend - Bootcamp DevSuperior: Desafio 4 - Cap. 8
 
-##Visão Geral da finalidade do projeto
+## Visão Geral da finalidade do projeto
 O sistema MovieFlix consiste em um banco de filmes, os quais podem ser listados e avaliados pelos utilizadores. 
 Utilizadores autenticados que podem ser visitantes (VISITOR) e membros (MEMBER). Apenas usuários membros podem inserir avaliações aos filmes no sistema.
 
-![alt text](https://i.imgur.com/UXXps8r.png)
+![alt text](https://i.imgur.com/McJqku4.png)
 
-##Tecnologias
+## Tecnologias
 
 Java 11
 Spring boot 2.3
@@ -22,7 +22,7 @@ Postman
 
 git clone https://github.com/isdma8/bds-movieflix
 
-# Licença
+### Licença
 Free :)
 
 
