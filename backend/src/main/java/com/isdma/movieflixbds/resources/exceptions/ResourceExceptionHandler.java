@@ -30,7 +30,7 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 	
-	//para tratar a excepção la do delete e mostrar nao so nao consola mas tambem nas respostas das requisições
+
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<StandardError> entityNotFound(DatabaseException e, HttpServletRequest request){
 		HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -47,7 +47,7 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ValidationError> validation(MethodArgumentNotValidException e, HttpServletRequest request){
-		HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;//retorna erro 422, normalmente é este que retornamos para falha na validaçºao de campos, ele diz que ha um erro na inserção de entidade
+		HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
 		ValidationError err = new ValidationError();
 		err.setTimestamp(Instant.now());
 		err.setStatus(status.value());

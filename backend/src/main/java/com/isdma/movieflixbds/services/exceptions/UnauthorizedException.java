@@ -1,6 +1,6 @@
 package com.isdma.movieflixbds.services.exceptions;
 
-public class UnauthorizedException extends RuntimeException { //erro 401 (token nao é valido do user)
+public class UnauthorizedException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
 	public UnauthorizedException(String msg) {

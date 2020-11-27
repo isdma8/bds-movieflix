@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -21,7 +20,7 @@ import org.springframework.web.filter.CorsFilter;
 
 
 @Configuration
-@EnableResourceServer    //para que esta classe implemente a funcionalidade de ResourceServerdoOuauth2
+@EnableResourceServer 
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Autowired
@@ -31,37 +30,36 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Autowired
 	private JwtTokenStore tokenStore;
 	
-	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };//Liberado para todos estes links
+	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
 	
-	private static final String[] VISITOR_OR_MEMBER= { "/movies/**", "/reviews/**" }; //todos os pedidos acima do link base são rotas sem ser get entao ficam disponiveis para estes, ** é tudo
+	private static final String[] VISITOR_OR_MEMBER= { "/movies/**", "/genres/**" };
 	
-	private static final String[] MEMBER = { "/reviews/**" };
+	private static final String[] MEMBER= { "/reviews/**" };
 	
 	
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-		//aqui configuramos o tokenstore	//aqui assim vai poder analisar se o token ta batendo certo com o secret o tempo de expiração etc
-		resources.tokenStore(tokenStore); //recebendo o nosso bean tokenstore
+	
+		resources.tokenStore(tokenStore);
 		
 	}
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		//Liberar H2
-		if(Arrays.asList(env.getActiveProfiles()).contains("test")) { //se estou a rodar num profile teste eu quero liberar o acesso, liberar o h2
-			http.headers().frameOptions().disable(); //o h2 requer que eu desabilite isto 
+		if(Arrays.asList(env.getActiveProfiles()).contains("test")) { 
+			http.headers().frameOptions().disable();  
 		}
 		
 		//Configurar as Rotas
 		
 		http.authorizeRequests()
-		.antMatchers(PUBLIC).permitAll() //Não se exige login a estes
-		.antMatchers(HttpMethod.GET, VISITOR_OR_MEMBER).permitAll() //libetar apenas o metodo get nestes caras
-		.antMatchers(VISITOR_OR_MEMBER).hasAnyRole("VISITOR", "MEMBER")//as rotas deste role pode acessar quem tiver algum destes papeis, no bd ta ROLE_PAPEL, aqui so basta o PAPEL
-		.antMatchers(MEMBER).hasAnyRole("MEMBER") //so pode andar em admi quem tiver logado como admin
-		.anyRequest().authenticated(); //para qualquer outra rota tem de tar logado nao importando o perfil de user
+		.antMatchers(PUBLIC).permitAll()
+		.antMatchers(VISITOR_OR_MEMBER).hasAnyRole("VISITOR", "MEMBER")
+		.antMatchers(MEMBER).hasAnyRole("MEMBER")
+		.anyRequest().authenticated();
 	
-		http.cors().configurationSource(corsConfigurationSource()); //basta isto para chamar a conf de cors que definimos abaixo
+		http.cors().configurationSource(corsConfigurationSource());
 	}
 
 	

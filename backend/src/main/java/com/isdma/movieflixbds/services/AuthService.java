@@ -17,10 +17,10 @@ public class AuthService {
 	private UserRepository userRepository;
 	
 	@Transactional(readOnly = true)
-	public User authenticated() { //que user está autenticado?
+	public User authenticated() {
 		
 		try {
-			String username = SecurityContextHolder.getContext().getAuthentication().getName(); //pega nome do user que foi reconecido pelo spring security
+			String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
 	
 			return userRepository.findByEmail(username);
 		}
@@ -31,7 +31,7 @@ public class AuthService {
 	}
 	
 	
-	public void validateSelfOrAdmin(Long userId) { //se for o próprio user  pesquisar por si ou um admin passa senao nao passa
+	public void validateSelfOrAdmin(Long userId) { 
 		User user = authenticated();
 		if(!user.getId().equals(userId) && !user.hasHole("ROLE_MEMBER")) {
 			throw new ForbiddenException("Access denied");

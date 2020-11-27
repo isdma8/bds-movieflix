@@ -51,8 +51,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	
-	//Aqui temos os 4 beans que precisamos e que criamos na classe AppConfig e websecurityconfig
+
 	
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -62,11 +61,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
-		.withClient(clientId) //frontend tem de informar destes dados da aplicação no token para ter acesso
-		.secret(passwordEncoder.encode(clientSecret))    //mais tarde iremos colocar em arquivo	
-		.scopes("read", "write") //tipo de acesso
-		.authorizedGrantTypes("password", "refresh_token") //ha varios tipos no auth, temos de usar o que pretendemos, estao descritos no auth os existentes
-		.accessTokenValiditySeconds(jwtDuration) //1 dia em segundos em que o tokin é valido 86400
+		.withClient(clientId) 
+		.secret(passwordEncoder.encode(clientSecret))    
+		.scopes("read", "write") 
+		.authorizedGrantTypes("password", "refresh_token") 
+		.accessTokenValiditySeconds(jwtDuration) 
 		.refreshTokenValiditySeconds(jwtDuration);
 	}
 
@@ -74,13 +73,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		
 		TokenEnhancerChain chain = new TokenEnhancerChain();
-		chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer)); //espera uma lista para podermos passar o token passamos tmabem o accesstokenconveter
+		chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
 		
-		//Aqui colocamos quem vai autorizar e qual o formato do tokin
-		endpoints.authenticationManager(authenticationManager) //vai ser o bean que criei
-		.tokenStore(tokenStore) //vai ser o bean que injetamos tambem
-		.accessTokenConverter(accessTokenConverter)//outro que definimos 
-		.tokenEnhancer(chain) //assim passamos as nossas adições ao header do token
+		
+		endpoints.authenticationManager(authenticationManager) 
+		.tokenStore(tokenStore) 
+		.accessTokenConverter(accessTokenConverter)
+		.tokenEnhancer(chain) 
 		.userDetailsService(userDetailsService);
 	}
 

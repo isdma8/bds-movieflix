@@ -30,7 +30,6 @@ public class MovieResource {
 		@RequestParam(value = "orderBy", defaultValue = "title") String orderBy
 		){
 	
-		//Declarar objeto especial do Spring e instancio com um metodo de builder delel com os parametros que queremos definidos acima
 			PageRequest pagerequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
 		
 			Page<MovieDTO> list = service.findAllPagedByGenre(genreId, pagerequest);

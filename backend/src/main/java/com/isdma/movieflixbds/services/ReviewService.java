@@ -22,8 +22,6 @@ public class ReviewService {
 	@Autowired
 	private MovieRepository movieRepository;
 	
-	//@Autowired
-	//private UserRepository userRepository;
 	
 	@Autowired
 	private AuthService authService;
@@ -48,31 +46,13 @@ public class ReviewService {
 	private void copyDtoToEntity(ReviewDTO dto, Review entity) {
 		entity.setText(dto.getText());
 		
-		//Podemos ir buscar o id do filme ao sitio onde esta a ver e o user ao login
-		
 		Movie mov = dto.getMovieId() == 0 ? null : movieRepository.getOne(dto.getMovieId());
 		
 		entity.setMovie(mov);
 		
-		//User user = dto.getUserId() == 0 ? null : userRepository.getOne(dto.getUserId());
 		User user = authService.authenticated();
 		
 		entity.setUser(user);
 	}
 	
-	/*
-	@Autowired
-	MovieRepository movieRepository;
-	
-	@Transactional(readOnly = true) 
-	public Page<ReviewDTO> findAllByMovieId(Long movieId, PageRequest pagerequest) {
-		Movie mov = movieId == 0 ? null : movieRepository.getOne(movieId);
-
-		//Page<Movie> list = movieRepository.findAllPagedByGenre(genre, pagerequest) ;
-		
-		Page<Review> list = reviewRepository.findAllByMovieId(mov, pagerequest);
-		
-		return list.map(x -> new ReviewDTO(x));
-		
-	}*/
 }

@@ -3,7 +3,6 @@ package com.isdma.movieflixbds.resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,6 @@ public class GenreResource {
 		@RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage
 		){
 	
-		//Declarar objeto especial do Spring e instancio com um metodo de builder delel com os parametros que queremos definidos acima
 			PageRequest pagerequest = PageRequest.of(page, linesPerPage);		
 		
 			Page<GenreDTO> list = service.findAllPaged(pagerequest);
