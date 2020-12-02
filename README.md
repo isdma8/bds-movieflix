@@ -18,13 +18,21 @@ git clone https://github.com/isdma8/bds-movieflix
 ## Tecnologias
 
 -> Java 11
+
 -> Spring boot 2.3
+
 -> Maven
+
 -> Cloud OAuth2
+
 -> JPA
+
 -> Swagger
+
 -> Base de dados H2
+
 -> Postman
+
 -> JUnit
 
 
