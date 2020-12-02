@@ -1,5 +1,7 @@
 package com.isdma.movieflixbds.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +21,15 @@ public class GenreResource {
 	@Autowired
 	private GenreService service;
 	
-	@GetMapping 
+	
+
+	@GetMapping
+	public ResponseEntity<List<GenreDTO>> findAll(){
+		List<GenreDTO> list = service.findAll();
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping(value = "/paged")
 	public ResponseEntity<Page<GenreDTO>> findAll(
 		@RequestParam(value = "page", defaultValue = "0") Integer page,
 		@RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage
@@ -32,4 +42,5 @@ public class GenreResource {
 			return ResponseEntity.ok(list);
 	
 	}
+	
 }

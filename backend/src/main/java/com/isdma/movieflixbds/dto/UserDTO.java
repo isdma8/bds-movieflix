@@ -1,10 +1,6 @@
 package com.isdma.movieflixbds.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import com.isdma.movieflixbds.entities.User;
 
@@ -15,9 +11,9 @@ public class UserDTO implements Serializable{
 	private String name;
 	private String email;
 	
-	private Set<RoleDTO> roles = new HashSet<>();
+	//private Set<RoleDTO> roles = new HashSet<>();
 	
-	private List<ReviewDTO> reviews = new ArrayList<>();
+	//private List<ReviewDTO> reviews = new ArrayList<>();
 	
 	public UserDTO() {
 		
@@ -34,8 +30,8 @@ public class UserDTO implements Serializable{
 		name = entity.getName();
 		email = entity.getEmail();
 		
-		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
-		entity.getReviews().forEach(rev -> this.reviews.add(new ReviewDTO(rev)));
+		//entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
+		//entity.getReviews().forEach(rev -> this.reviews.add(new ReviewDTO(rev)));
 	}
 
 	public Long getId() {
@@ -65,14 +61,14 @@ public class UserDTO implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+/*
 	public Set<RoleDTO> getRoles() {
 		return roles;
 	}
 
 	public List<ReviewDTO> getReviews() {
 		return reviews;
-	}
+	}*/
 	
 	
 	

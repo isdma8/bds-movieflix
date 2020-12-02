@@ -1,5 +1,5 @@
-INSERT INTO tb_user (name, email, password) VALUES ('Alex Brown', 'alex@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (name, email, password) VALUES ('Maria Green', 'maria@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (name, email, password) VALUES ('Bob Brown', 'bob@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (name, email, password) VALUES ('Ana Green', 'ana@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (name, email, password) VALUES ('Nelio Alves', 'nelio@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (name, email, password) VALUES ('Daniel Almeida', 'daniel@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 
@@ -7,8 +7,8 @@ INSERT INTO tb_role (authority) VALUES ('ROLE_VISITOR');
 INSERT INTO tb_role (authority) VALUES ('ROLE_MEMBER');
 
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
-INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
-INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 2);
 
 INSERT INTO tb_genre (name) VALUES ('Action');
@@ -29,7 +29,3 @@ INSERT INTO tb_movie (title, sub_Title, year, img_Url, synopsis, genre_id) VALUE
 INSERT INTO tb_movie (title, sub_Title, year, img_Url, synopsis, genre_id) VALUES ('A Vida Secreta dos Nossos Bichos 2', 'Eles ainda guardam segredos.', 2019, 'https://image.tmdb.org/t/p/w220_and_h330_face/sPEAwV5u6cwqNMBV6MD4CWFAclu.jpg', 'Max não vê grande apelo na presença de bebés humanos em casa. Porém, quando a sua dona tem um, e após algum tempo de adaptação, o cão não resiste e apega-se à criança, tornando-se receoso e super-protector.', 2);
 INSERT INTO tb_movie (title, sub_Title, year, img_Url, synopsis, genre_id) VALUES ('Logan', 'O fim de uma lenda', 2017, 'https://image.tmdb.org/t/p/w220_and_h330_face/f0CtZbae9cXj8bkWdCHzUHx5lsR.jpg', 'No futuro, um exausto Logan, escondido na fronteira Mexicana, cuida do adoentado Professor X', 3);
 
-INSERT INTO tb_review (text, movie_id, user_id) VALUES ('5*****', 1, 1);
-INSERT INTO tb_review (text, movie_id, user_id) VALUES ('Muito bom!', 2, 2);
-INSERT INTO tb_review (text, movie_id, user_id) VALUES ('Filme incrível!', 3, 3);
-INSERT INTO tb_review (text, movie_id, user_id) VALUES ('Muito bom mesmo!', 3, 4);

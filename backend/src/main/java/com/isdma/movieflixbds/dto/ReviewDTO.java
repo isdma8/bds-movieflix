@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.validation.constraints.NotBlank;
 
 import com.isdma.movieflixbds.entities.Review;
+import com.isdma.movieflixbds.entities.User;
 
 public class ReviewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -16,25 +17,24 @@ public class ReviewDTO implements Serializable{
 
 	private Long movieId;
 	
-	private Long userId;
-
+	private User user;
 	
 	public ReviewDTO() {
 		
 	}
 
-	public ReviewDTO(Long id, String text, Long movieId, Long userId) {
+	public ReviewDTO(Long id, String text, Long movieId, User user) {
 		this.id = id;
 		this.text = text;
 		this.movieId = movieId;
-		this.userId = userId;
+		this.user = user;
 	}
 	
 	public ReviewDTO(Review entity) {
 		this.id = entity.getId();
 		this.text = entity.getText();
 		this.movieId = entity.getMovie().getId();
-		this.userId = entity.getUser().getId();
+		this.user = entity.getUser();
 	}
 
 	public Long getId() {
@@ -62,18 +62,22 @@ public class ReviewDTO implements Serializable{
 		this.movieId = movieId;
 	}
 
-
-	public Long getUserId() {
-		return userId;
+	
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
+	
+	
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 	
 	
 	

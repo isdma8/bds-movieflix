@@ -1,5 +1,8 @@
 package com.isdma.movieflixbds.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,14 +19,13 @@ public class GenreService {
 	@Autowired
 	GenreRepository repository;
 	
-	/*@Transactional(readOnly = true) 
-	public List<GenreDTO> findAll() {
-
+	@Transactional(readOnly = true) 
+	public List<GenreDTO> findAll(){
+		
 		List<Genre> list = repository.findAll();
 		
 		return list.stream().map(x -> new GenreDTO(x)).collect(Collectors.toList());
-
-	}*/
+	}
 	
 	@Transactional(readOnly = true) 
 	public Page<GenreDTO> findAllPaged(PageRequest pagerequest) {

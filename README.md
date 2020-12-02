@@ -8,14 +8,14 @@ Utilizadores autenticados que podem ser visitantes (VISITOR) e membros (MEMBER).
 
 ## Tecnologias
 
-Java 11
-Spring boot 2.3
-Maven
-Cloud OAuth2
-JPA
-Swagger
-Base de dados H2
-Postman
+-> Java 11
+-> Spring boot 2.3
+-> Maven
+-> Cloud OAuth2
+-> JPA
+-> Swagger
+-> Base de dados H2
+-> Postman
 
 
 ## Instalação (Clone)

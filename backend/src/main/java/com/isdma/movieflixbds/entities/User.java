@@ -91,7 +91,7 @@ public class User implements UserDetails, Serializable{
 		this.password = password;
 	}
 	
-
+	/*
 	public Set<Role> getRoles() {
 		return roles;
 	}
@@ -106,7 +106,7 @@ public class User implements UserDetails, Serializable{
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
-	}
+	}*/
 
 	@Override
 	public int hashCode() {
