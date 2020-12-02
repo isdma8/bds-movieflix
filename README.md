@@ -6,6 +6,15 @@ Utilizadores autenticados que podem ser visitantes (VISITOR) e membros (MEMBER).
 
 ![alt text](https://i.imgur.com/McJqku4.png)
 
+## Instalação (Clone)
+
+-> Exemplo de compilador para abrir: 
+String Tool Suite
+
+-> Clone GitHub
+git clone https://github.com/isdma8/bds-movieflix
+
+
 ## Tecnologias
 
 -> Java 11
@@ -16,11 +25,9 @@ Utilizadores autenticados que podem ser visitantes (VISITOR) e membros (MEMBER).
 -> Swagger
 -> Base de dados H2
 -> Postman
+-> JUnit
 
 
-## Instalação (Clone)
-
-git clone https://github.com/isdma8/bds-movieflix
 
 ### Licença
 Free :)
