@@ -17,24 +17,25 @@ public class ReviewDTO implements Serializable{
 
 	private Long movieId;
 	
-	private User user;
+	//private User user;
+	private UserDTO userDTO;
 	
 	public ReviewDTO() {
 		
 	}
 
-	public ReviewDTO(Long id, String text, Long movieId, User user) {
+	public ReviewDTO(Long id, String text, Long movieId, UserDTO userDTO/*User user*/) {
 		this.id = id;
 		this.text = text;
 		this.movieId = movieId;
-		this.user = user;
+		this.userDTO = userDTO;
 	}
 	
 	public ReviewDTO(Review entity) {
 		this.id = entity.getId();
 		this.text = entity.getText();
 		this.movieId = entity.getMovie().getId();
-		this.user = entity.getUser();
+		this.userDTO = new UserDTO(entity.getUser());
 	}
 
 	public Long getId() {
@@ -61,17 +62,15 @@ public class ReviewDTO implements Serializable{
 	public void setMovieId(Long movieId) {
 		this.movieId = movieId;
 	}
-
 	
-	public User getUser() {
-		return user;
+
+	public UserDTO getUserDTO() {
+		return userDTO;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserDTO(UserDTO userDTO) {
+		this.userDTO = userDTO;
 	}
-	
-	
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
