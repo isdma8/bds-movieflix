@@ -27,7 +27,7 @@ public class GenreDTO implements Serializable{
 		id = entity.getId();
 		name = entity.getName();
 		
-		entity.getMovies().forEach(mov -> this.movies.add(new MovieDTO(mov)));
+		//entity.getMovies().forEach(mov -> this.movies.add(new MovieDTO(mov)));
 	}
 
 
@@ -47,9 +47,9 @@ public class GenreDTO implements Serializable{
 		this.name = name;
 	}
 
-	public Set<MovieDTO> getMovies() {
+	/*public Set<MovieDTO> getMovies() {
 		return movies;
-	}
+	}*/
 	
 	
 	
