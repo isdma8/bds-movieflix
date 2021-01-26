@@ -1,0 +1,17 @@
+.main-nav{
+    height: 70px;
+    align-items: center;
+    padding: 0px 130px 0px 40px;
+    display: flex;
+    
+}
+
+.nav-logo-text{
+    color: #000;
+    font-style: normal;
+
+    &:hover{//quando tiver a pssar o rato por la
+        color: #000;
+    }
+
+}
