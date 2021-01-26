@@ -16,11 +16,29 @@ h2 {
     text-transform: uppercase;
 }
 
-h4,
-h5,
-h6 {
+h3 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+h4 {
     font-weight: bold;
     font-size: 22px;
+    margin-left: 14px;
+    margin-top: 26px;
+}
+
+h5{
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFC700;
+    margin-left: 14px;
+}
+
+p{
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 14px;
 }
 
 ul {

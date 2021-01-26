@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import List from './Components/Movies/List';
 
 const Movies = () => {
 
@@ -8,7 +9,7 @@ const Movies = () => {
             
             <Switch>
                 <Route path="/movies" exact>
-                    <h1>List</h1>
+                    <List />
                 </Route>
                 <Route path="/movies/:movieId">
                     <h1>Form</h1>
