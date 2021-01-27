@@ -9,7 +9,7 @@ type Props = {
 const ButtonIcon = ({ text }:Props)=> (
     <div className="d-flex">
         <button className="btn btn-warning btn-icon">
-                <h5>{ text }</h5>
+                <h3>{ text }</h3>
         </button>
         <div className="btn-icon-content">
             <Arrow />

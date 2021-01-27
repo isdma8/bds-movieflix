@@ -1,14 +1,20 @@
 import React from 'react';
 import './styles.scss';
 import {ReactComponent as ImageTest} from 'core/assets/images/movietest.svg';
+import { Movie } from 'core/types/Movie';
 
-const MovieCard = () => {
+type Params = {     
+    movie: Movie;
+}
+
+
+const MovieCard = ({movie}: Params) => {
     return (
         <div className="movie-card-container">
             <ImageTest />
-            <h4 className="">O Retorno do Rei</h4>
-            <h5>2013</h5>
-            <p>O olho do inimigo está se movendo.</p>
+            <h4>{movie.title}</h4>
+            <h5>{movie.year}</h5>
+            <p>{movie.subTitle}</p>
 
         </div>
     );

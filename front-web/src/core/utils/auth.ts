@@ -29,7 +29,7 @@ export const saveSessionData = (loginResponse: LoginResponse) => {
 export const logout = () => {
 
     localStorage.removeItem('authData');
-    history.replace('/auth/login');
+    history.replace('/');
 }
 
 export const isAuthenticated = () => {
