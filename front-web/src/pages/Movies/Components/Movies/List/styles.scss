@@ -6,3 +6,12 @@
     grid-template-columns: repeat(auto-fill, 250px);
     
 }
+
+
+a {
+    &:hover {
+        text-decoration: none;
+        color: unset; //zera a cor do bootstrap e depois o comportamento ja fica pela cor que demos no caso no Navbar/styles.scss
+    }
+    color: #fff;
+}
