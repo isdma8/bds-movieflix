@@ -20,7 +20,7 @@ const List = () => {
 
         const params = { 
             page: activePage,
-            linesPerPage: 12 
+            linesPerPage: 8
         }
 
         setIsLoading(true);
@@ -48,8 +48,8 @@ const List = () => {
             </div>
             { 
                 <Pagination
-                    totalPages={6}
-                    activePage={1}
+                    totalPages={moviesResponse?.totalPages as number}
+                    activePage={activePage}
                     onChange={page => setActivePage(page)}
                 />
             }
