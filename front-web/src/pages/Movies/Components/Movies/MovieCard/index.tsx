@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles.scss';
-import {ReactComponent as ImageTest} from 'core/assets/images/movietest.svg';
 import { Movie } from 'core/types/Movie';
 
 type Params = {     
@@ -11,7 +10,7 @@ type Params = {
 const MovieCard = ({movie}: Params) => {
     return (
         <div className="movie-card-container">
-            <ImageTest />
+            <img src={movie.imgUrl} alt={movie.title} className="img-movie-card"/>
             <h4>{movie.title}</h4>
             <h5>{movie.year}</h5>
             <p>{movie.subTitle}</p>
