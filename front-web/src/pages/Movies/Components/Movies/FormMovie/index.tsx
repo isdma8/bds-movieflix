@@ -1,12 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MovieCard from '../MovieCard';
 import MovieDetails from '../MovieDetails';
 import './styles.scss';
 import { ReactComponent as ImageTest } from 'core/assets/images/movietest.svg';
+import AddReview from '../AddReview';
+import { useForm } from 'react-hook-form';
+import { makeLogin } from 'core/utils/request';
+import { saveSessionData } from 'core/utils/auth';
+import { useHistory } from 'react-router-dom';
+
+
+type FormState = {
+    review: string;
+}
+
 
 const FormMovie = () => {
 
+    const history = useHistory();
+
+    const { register, handleSubmit, errors } = useForm<FormState>();
+
+    const [hasError, setHasError] = useState(false);
+
+    const onSubmit = (data: FormState) => {
+        console.log(data);
+        console.log(localStorage.length);
+
+        /*makeLogin(data)
+        .then(response => {
+            setHasError(false);
+            saveSessionData(response.data);
+            history.push('/movies');
+            //history.replace(from);
+        })
+        .catch(() => {
+            setHasError(true);
+        })*/
+    }
+
+
     return (
+        <>
         <MovieDetails >
             <div className="col-6">
 
@@ -29,6 +64,32 @@ const FormMovie = () => {
             </div>
 
         </MovieDetails>
+
+        <AddReview>
+
+            <form className="login-form" onSubmit={handleSubmit(onSubmit)}> 
+                    <div className="margin-bottom-40">
+
+                        <input 
+                            type="email" 
+                            className={`form-control input-base ${errors.review && 'is-invalid'} `}
+                            placeholder="Review"
+                            name="review" 
+                            ref={register({
+                                required: "Campo obrigatório",
+                                maxLength: 500,
+                            })}
+                        />
+                        {errors.review && (
+                            <div className="invalid-feedback d-block">
+                                {errors.review.message} 
+                            </div>
+                        )}
+                                            
+                    </div>
+            </form>
+        </AddReview>
+        </>
     );
 }
 

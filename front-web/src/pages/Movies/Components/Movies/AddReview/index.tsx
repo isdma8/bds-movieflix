@@ -1,11 +1,15 @@
 import React from 'react';
 import './styles.scss';
 
-const AddReview = () => {
+type Props = {
+    children: React.ReactNode;
+}
+
+const AddReview = ({children}: Props) => {
     
     return (
-       <div>
-           ssdasdsafd
+       <div className="add-review-container">
+           {children}
        </div>
     );
 }
