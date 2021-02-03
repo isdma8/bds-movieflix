@@ -67,18 +67,18 @@ const FormMovie = () => {
 
         <AddReview>
 
-            <form className="login-form" onSubmit={handleSubmit(onSubmit)}> 
-                    <div className="margin-bottom-40">
+            <form className="review-form" onSubmit={handleSubmit(onSubmit)}> 
+                    <div className="margin-bottom-10">
 
-                        <input 
-                            type="email" 
+                        <textarea  
                             className={`form-control input-base ${errors.review && 'is-invalid'} `}
-                            placeholder="Review"
+                            placeholder="Deixe a sua avaliação aqui"
                             name="review" 
                             ref={register({
                                 required: "Campo obrigatório",
                                 maxLength: 500,
                             })}
+                            rows={2}
                         />
                         {errors.review && (
                             <div className="invalid-feedback d-block">
@@ -88,6 +88,7 @@ const FormMovie = () => {
                                             
                     </div>
             </form>
+
         </AddReview>
         </>
     );

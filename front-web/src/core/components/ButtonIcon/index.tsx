@@ -11,9 +11,12 @@ const ButtonIcon = ({ text }:Props)=> (
         <button className="btn btn-warning btn-icon">
                 <h3>{ text }</h3>
         </button>
-        <div className="btn-icon-content">
-            <Arrow />
-        </div>
+        { text != "salvar avaliação" && (
+             <div className="btn-icon-content">
+                <Arrow />
+             </div>
+        )
+        }
     </div>
 
 );

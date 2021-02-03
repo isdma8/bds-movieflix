@@ -1,3 +1,4 @@
+import ButtonIcon from 'core/components/ButtonIcon';
 import React from 'react';
 import './styles.scss';
 
@@ -5,12 +6,20 @@ type Props = {
     children: React.ReactNode;
 }
 
-const AddReview = ({children}: Props) => {
-    
+const AddReview = ({ children }: Props) => {
+
     return (
-       <div className="add-review-container">
-           {children}
-       </div>
+        <div className="add-review-container">
+            {children}
+            <button
+                type="button"
+                className="btn btn-warning border-radius-10"
+                
+            > 
+                   salvar avaliação
+            </button>
+        </div>
+
     );
 }
 
