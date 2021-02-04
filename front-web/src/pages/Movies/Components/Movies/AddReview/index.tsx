@@ -16,7 +16,7 @@ const AddReview = ({ children }: Props) => {
                 className="btn btn-warning border-radius-10"
                 
             > 
-                   salvar avaliação
+                   <span className="btn-text">salvar avaliação</span> 
             </button>
         </div>
 

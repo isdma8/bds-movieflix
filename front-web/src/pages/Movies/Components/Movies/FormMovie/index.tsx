@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieCard from '../MovieCard';
 import MovieDetails from '../MovieDetails';
 import './styles.scss';
@@ -7,11 +7,20 @@ import AddReview from '../AddReview';
 import { useForm } from 'react-hook-form';
 import { makeLogin } from 'core/utils/request';
 import { saveSessionData } from 'core/utils/auth';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { NonceProvider } from 'react-select';
+import { makePrivateRequest } from 'core/utils/request';
+import {Movie, MoviesResponse} from 'core/types/Movie';
+import { toast } from 'react-toastify';
+import ReviewBox from '../ReviewCard';
 
 
 type FormState = {
     review: string;
+}
+
+type ParamsType = {
+    movieId: string;
 }
 
 
@@ -19,25 +28,39 @@ const FormMovie = () => {
 
     const history = useHistory();
 
+    const [movie, setMovie] = useState<Movie>();
+    
+
     const { register, handleSubmit, errors } = useForm<FormState>();
 
     const [hasError, setHasError] = useState(false);
 
+    const { movieId } = useParams<ParamsType>();
+
     const onSubmit = (data: FormState) => {
         console.log(data);
-        console.log(localStorage.length);
-
-        /*makeLogin(data)
-        .then(response => {
-            setHasError(false);
-            saveSessionData(response.data);
-            history.push('/movies');
-            //history.replace(from);
+        makePrivateRequest({
+            url: `/movies/${movieId}`,
+            method: 'POST', 
+            data: data
         })
-        .catch(() => {
-            setHasError(true);
-        })*/
+        .then(() => {
+            toast.info('Review salva com sucesso!');
+            history.push('/movies');
+        })
+        .catch( () => {
+            toast.error('Erro ao salvar a review!');
+        })
     }
+    
+
+    useEffect(() => {
+            makePrivateRequest({ url: `/movies/${movieId}` })
+            .then(response => setMovie(response.data))
+            .finally(() => {
+                    //setIsLoading(false);
+            })
+    }, [movieId]);
 
 
     return (
@@ -45,19 +68,15 @@ const FormMovie = () => {
         <MovieDetails >
             <div className="col-6">
 
-                <img src="https://image.tmdb.org/t/p/w220_and_h330_face/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg" alt="test" className="image-card-details"/>
+                <img src={movie?.imgUrl} alt="test" className="image-card-details"/>
             </div>
             <div className="col-6">
                 <div className="movie-card-detail">
-                    <h4>O Retorno do Rei</h4>
-                    <h5>2013</h5>
-                    <p>O olho do inimigo está se movendo</p>
+                    <h4>{movie?.title}</h4>
+                    <h5>{movie?.year}</h5>
+                    <p>{movie?.subTitle}</p>
                     <div className="card-detail-description">
-                        O confronto final entre as forças do bem e do mal que lutam pelo controle do futuro da Terra Média se aproxima. 
-                        Sauron planeja um grande ataque a Minas Tirith, capital de Gondor, o que faz com que Gandalf e Pippin partam para 
-                        o local na intenção de ajudar a resistência. Um exército é reunido por Theoden em Rohan, em mais uma tentativa de 
-                        deter as forças de Sauron. Enquanto isso, Frodo, Sam e Gollum seguem sua viagem rumo à Montanha da Perdição para destruir o anel.
-                    
+                        {movie?.synopsis}
                     </div>
 
                 </div>
@@ -65,20 +84,23 @@ const FormMovie = () => {
 
         </MovieDetails>
 
-        <AddReview>
-
+        
+            
             <form className="review-form" onSubmit={handleSubmit(onSubmit)}> 
-                    <div className="margin-bottom-10">
+            <AddReview>
+                    <div className="margin-bottom-10">                                                                              
 
                         <textarea  
                             className={`form-control input-base ${errors.review && 'is-invalid'} `}
                             placeholder="Deixe a sua avaliação aqui"
                             name="review" 
+                            
                             ref={register({
                                 required: "Campo obrigatório",
-                                maxLength: 500,
+                                
+                                
                             })}
-                            rows={2}
+                            rows={3}
                         />
                         {errors.review && (
                             <div className="invalid-feedback d-block">
@@ -87,10 +109,23 @@ const FormMovie = () => {
                         )}
                                             
                     </div>
+                    </AddReview>
             </form>
+            
 
-        </AddReview>
+            
+        
+        <div className="review-list">
+                <ReviewBox />
+                <ReviewBox />
+                <ReviewBox />
+                <ReviewBox />
+        </div>
+
+
         </>
+
+
     );
 }
 
