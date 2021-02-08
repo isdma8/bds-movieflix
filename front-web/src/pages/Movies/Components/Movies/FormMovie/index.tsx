@@ -14,15 +14,17 @@ import {Movie, MoviesResponse} from 'core/types/Movie';
 import { toast } from 'react-toastify';
 import ReviewBox from '../ReviewCard';
 
+import {isAllowedByRole} from 'core/utils/auth';
+
 
 type FormState = {
-    review: string;
+    text: string;
+    movieId: number;
 }
 
 type ParamsType = {
     movieId: string;
 }
-
 
 const FormMovie = () => {
 
@@ -38,11 +40,15 @@ const FormMovie = () => {
     const { movieId } = useParams<ParamsType>();
 
     const onSubmit = (data: FormState) => {
+        data.movieId = Number(movieId);
         console.log(data);
+        
+        
         makePrivateRequest({
-            url: `/movies/${movieId}`,
+            url: `/reviews`,
             method: 'POST', 
             data: data
+            
         })
         .then(() => {
             toast.info('Review salva com sucesso!');
@@ -85,41 +91,43 @@ const FormMovie = () => {
         </MovieDetails>
 
         
-            
+            {isAllowedByRole(['ROLE_MEMBER']) ? (
             <form className="review-form" onSubmit={handleSubmit(onSubmit)}> 
             <AddReview>
                     <div className="margin-bottom-10">                                                                              
 
                         <textarea  
-                            className={`form-control input-base ${errors.review && 'is-invalid'} `}
+                            className={`form-control input-base ${errors.text && 'is-invalid'} `}
                             placeholder="Deixe a sua avaliação aqui"
-                            name="review" 
+                            name="text"
                             
                             ref={register({
                                 required: "Campo obrigatório",
                                 
-                                
                             })}
                             rows={3}
                         />
-                        {errors.review && (
+                        {errors.text && (
                             <div className="invalid-feedback d-block">
-                                {errors.review.message} 
+                                {errors.text.message} 
                             </div>
                         )}
                                             
                     </div>
+                    
                     </AddReview>
-            </form>
-            
+            </form>)
+             : null}
 
             
         
         <div className="review-list">
-                <ReviewBox />
-                <ReviewBox />
-                <ReviewBox />
-                <ReviewBox />
+
+            {
+                movie?.reviews.map(review => (<ReviewBox review={review}/>))
+                //<ReviewBox review={review}/>
+            }
+                
         </div>
 
 

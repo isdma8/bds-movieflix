@@ -12,7 +12,6 @@ const AddReview = ({ children }: Props) => {
         <div className="add-review-container">
             {children}
             <button
-                type="button"
                 className="btn btn-warning border-radius-10"
                 
             > 

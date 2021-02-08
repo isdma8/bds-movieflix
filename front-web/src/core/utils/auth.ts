@@ -14,7 +14,7 @@ type LoginResponse = {
     userId: number;
 }
 
-export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
+export type Role = 'ROLE_MEMBER';
 
 type AccessToken = {
     exp: number,
