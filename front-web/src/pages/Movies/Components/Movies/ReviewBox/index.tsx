@@ -1,19 +1,27 @@
-import { Review } from 'core/types/Movie';
-import React from 'react';
+import { Review, User } from 'core/types/Movie';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import {ReactComponent as ImageStar} from 'core/assets/images/star.svg';
+import { useParams } from 'react-router-dom';
 
 type Params = {     
     review: Review;
+
+    
 }
 
-const ReviewBox = ({review}: Params) => {
 
+const ReviewBox = ({review}: Params) => {
+    console.log(review.user);
+
+    
+    
     return (
         <div>
             <div className="d-flex">
                 <ImageStar className="mt-1 ml-4"/>
-                <p className="review-user-name">{review.user[1]}</p> 
+
+                <p className="review-user-name">{review.user.name}</p> 
             </div>
             <div className="review-box-text">
                 {review.text}

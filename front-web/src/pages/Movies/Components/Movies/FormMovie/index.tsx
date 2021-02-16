@@ -12,7 +12,7 @@ import { NonceProvider } from 'react-select';
 import { makePrivateRequest } from 'core/utils/request';
 import {Movie, MoviesResponse} from 'core/types/Movie';
 import { toast } from 'react-toastify';
-import ReviewBox from '../ReviewCard';
+import ReviewBox from '../ReviewBox';
 
 import {isAllowedByRole} from 'core/utils/auth';
 
@@ -29,6 +29,8 @@ type ParamsType = {
 const FormMovie = () => {
 
     const history = useHistory();
+
+    const roles = ['ROLE_ADMIN', 'ROLE_MEMBER'];
 
     const [movie, setMovie] = useState<Movie>();
     
@@ -125,7 +127,6 @@ const FormMovie = () => {
 
             {
                 movie?.reviews.map(review => (<ReviewBox review={review}/>))
-                //<ReviewBox review={review}/>
             }
                 
         </div>

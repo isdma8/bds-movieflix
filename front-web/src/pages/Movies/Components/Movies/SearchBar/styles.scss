@@ -20,3 +20,28 @@
     
     
 }
+
+.filter-select-container{
+    flex: 1;
+    margin-left: 10px;
+    color: #6C6C6C;
+    
+
+
+    .product-categories-select__control{
+        height: 40px;
+        width: 230px;
+        background-color: #6C6C6C;
+        border: none;
+        border-radius: 0;
+        
+    }
+    
+    .product-categories-select__indicator-separator{
+        display: none;
+    }
+    
+    .product-categories-select__placeholder{
+        color: #fff;
+    }
+}
