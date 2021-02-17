@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Pagination from '../../Pagination';
 import MovieCard from '../MovieCard';
-import SearchBar from '../SearchBar';
+import SearchBar, {FilterGenre} from '../SearchBar';
 import {MoviesResponse} from 'core/types/Movie';
 import './styles.scss';
 import { makePrivateRequest } from 'core/utils/request';
@@ -16,11 +16,11 @@ const List = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(()=> {
-
+    const getGenres = useCallback((filter?: FilterGenre) => {
         const params = { 
             page: activePage,
-            linesPerPage: 8
+            linesPerPage: 8,
+            genreId : filter?.genreId
         }
 
         setIsLoading(true);
@@ -29,13 +29,18 @@ const List = () => {
             .finally(() => {
                 setIsLoading(false);
             })
+    }, [activePage])
+
+    useEffect(()=> {
+
+        getGenres();
 
 
-    }, [activePage]);
+    }, [getGenres]);
 
     return (
         <div>
-            <SearchBar />
+            <SearchBar onSearch={filter => getGenres(filter)}/>
             <div className="cards-container">
             {isLoading ? <MovieCardLoader /> : (
             moviesResponse?.content.map(movie => (

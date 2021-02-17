@@ -5,11 +5,22 @@ import Select from 'react-select';
 import { makePrivateRequest} from 'core/utils/request';
 import { Genre } from 'core/types/Movie';
 
-const SearchBar = () => {
+export type FilterGenre = {
+    genreId?: number;
+}
+
+type Props = {
+    onSearch: (filter: FilterGenre) => void;
+}
+
+
+const SearchBar = ({onSearch}: Props) => {
 
     const [isLoadingGenres, setIsLoadingGenres] = useState(false);
 
-    const [genres, setGenres] = useState<Genre[]>([]);
+    const [genres, setGenres] = useState<Genre[]>([]);//Lista de objetos
+
+    const [genre, setGenre] = useState<Genre>(); //Objeto unico
 
     useEffect(() => {
         setIsLoadingGenres(true);
@@ -18,7 +29,10 @@ const SearchBar = () => {
             .finally(() => setIsLoadingGenres(false))
     }, []);
 
-    console.log(genres);
+    const handleGenreChange = (genre: Genre) => {
+        setGenre(genre);
+        onSearch({genreId: genre?.id});
+    }
 
  return (
     <div className="searchbar-container">
@@ -34,6 +48,7 @@ const SearchBar = () => {
                 classNamePrefix="product-categories-select"
                 placeholder="Aventura"
                 inputId="Generos"
+                onChange={value => handleGenreChange(value as Genre)}
             />
             <Arrow className="ml-5"/>
         </div>

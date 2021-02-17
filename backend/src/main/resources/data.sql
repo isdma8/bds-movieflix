@@ -11,10 +11,10 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 2);
 
-INSERT INTO tb_genre (name) VALUES ('Action');
-INSERT INTO tb_genre (name) VALUES ('Fiction');
+INSERT INTO tb_genre (name) VALUES ('Aventura');
+INSERT INTO tb_genre (name) VALUES ('Ficção');
 INSERT INTO tb_genre (name) VALUES ('Romance');
-INSERT INTO tb_genre (name) VALUES ('Fantasy');
+INSERT INTO tb_genre (name) VALUES ('Fantasia');
 INSERT INTO tb_genre (name) VALUES ('Drama');
 INSERT INTO tb_genre (name) VALUES ('Thriller');
 
