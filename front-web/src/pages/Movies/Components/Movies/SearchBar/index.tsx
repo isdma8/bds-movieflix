@@ -33,7 +33,6 @@ const SearchBar = ({onSearch}: Props) => {
         setGenre(genre);
         onSearch({genreId: genre?.id});
     }
-
  return (
     <div className="searchbar-container">
         <div className="search-box">
@@ -45,10 +44,11 @@ const SearchBar = ({onSearch}: Props) => {
                 getOptionLabel={(option: Genre) => option.name}
                 getOptionValue={(option: Genre) => String(option.id)}
                 className="filter-select-container"
-                classNamePrefix="product-categories-select"
+                classNamePrefix="genres-select"
                 placeholder="Aventura"
                 inputId="Generos"
                 onChange={value => handleGenreChange(value as Genre)}
+                isClearable
             />
             <Arrow className="ml-5"/>
         </div>

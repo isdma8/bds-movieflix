@@ -8,6 +8,7 @@
     background-color: #6C6C6C;
     padding-left: 16px;
     padding-top: 5px;
+    
 }
 
 .search-box{
@@ -19,6 +20,7 @@
     align-items: center;
     
     
+    
 }
 
 .filter-select-container{
@@ -26,9 +28,10 @@
     margin-left: 10px;
     color: #6C6C6C;
     
+    
 
 
-    .product-categories-select__control{
+    .genres-select__control{
         height: 40px;
         width: 230px;
         background-color: #6C6C6C;
@@ -37,11 +40,21 @@
         
     }
     
-    .product-categories-select__indicator-separator{
+    .genres-select__indicator-separator{
         display: none;
+        
     }
     
-    .product-categories-select__placeholder{
+    .genres-select__placeholder{
         color: #fff;
     }
+
+    .genres-select__single-value{
+        color: #fff;
+    }
+
+    .genres-select__indicator{
+        color: #fff;
+    }
+
 }
