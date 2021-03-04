@@ -1,7 +1,6 @@
 import React from 'react';
 import './styles.scss';
 import { ReactComponent as HomeImage } from 'core/assets/images/home-image.svg';
-import Card from 'core/components/Card';
 import Login from 'core/components/Login';
 
 const Home = () => {

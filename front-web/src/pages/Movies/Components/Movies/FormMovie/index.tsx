@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import MovieCard from '../MovieCard';
 import MovieDetails from '../MovieDetails';
 import './styles.scss';
-import { ReactComponent as ImageTest } from 'core/assets/images/movietest.svg';
 import AddReview from '../AddReview';
 import { useForm } from 'react-hook-form';
-import { makeLogin } from 'core/utils/request';
-import { saveSessionData } from 'core/utils/auth';
 import { useHistory, useParams } from 'react-router-dom';
-import { NonceProvider } from 'react-select';
 import { makePrivateRequest } from 'core/utils/request';
-import { Movie, MoviesResponse } from 'core/types/Movie';
+import { Movie } from 'core/types/Movie';
 import { toast } from 'react-toastify';
 import ReviewBox from '../ReviewBox';
 
@@ -34,14 +29,9 @@ const FormMovie = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const roles = ['ROLE_ADMIN', 'ROLE_MEMBER'];
-
     const [movie, setMovie] = useState<Movie>();
 
-
     const { register, handleSubmit, errors } = useForm<FormState>();
-
-    const [hasError, setHasError] = useState(false);
 
     const { movieId } = useParams<ParamsType>();
 
@@ -131,7 +121,7 @@ const FormMovie = () => {
                 : null}
 
 
-            {movie?.reviews.length != 0  ? (
+            {movie?.reviews.length !== 0  ? (
                 <div className="review-list">
 
                     {isLoading ? <AddReviewLoader /> : (

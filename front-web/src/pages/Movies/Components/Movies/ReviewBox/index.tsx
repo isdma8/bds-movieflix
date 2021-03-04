@@ -1,8 +1,7 @@
-import { Review, User } from 'core/types/Movie';
-import React, { useEffect, useState } from 'react';
+import { Review} from 'core/types/Movie';
+import React from 'react';
 import './styles.scss';
 import {ReactComponent as ImageStar} from 'core/assets/images/star.svg';
-import { useParams } from 'react-router-dom';
 
 type Params = {     
     review: Review;

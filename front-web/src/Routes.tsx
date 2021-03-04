@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import history from './core/utils/history';
 import Movies from 'pages/Movies';
 import PrivateRoute from 'core/components/Routes/PrivateRoute';
-import { isAuthenticated } from 'core/utils/auth';
 
 
 const Routes = () => (

@@ -16,21 +16,18 @@ type Props = {
 
 const SearchBar = ({onSearch}: Props) => {
 
-    const [isLoadingGenres, setIsLoadingGenres] = useState(false);
+
 
     const [genres, setGenres] = useState<Genre[]>([]);//Lista de objetos
 
-    const [genre, setGenre] = useState<Genre>(); //Objeto unico
+
 
     useEffect(() => {
-        setIsLoadingGenres(true);
         makePrivateRequest({ url: '/genres' })
             .then(response => setGenres(response.data))
-            .finally(() => setIsLoadingGenres(false))
     }, []);
 
     const handleGenreChange = (genre: Genre) => {
-        setGenre(genre);
         onSearch({genreId: genre?.id});
     }
  return (

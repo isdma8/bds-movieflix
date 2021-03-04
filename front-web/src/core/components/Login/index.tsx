@@ -2,19 +2,20 @@ import { saveSessionData } from 'core/utils/auth';
 import { makeLogin } from 'core/utils/request';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory, useLocation } from 'react-router-dom';  
+import { useHistory } from 'react-router-dom';  
 import ButtonIcon from '../ButtonIcon';
 import Card from '../Card';
 import './styles.scss';
+import {ReactComponent as Eye} from 'core/assets/images/eye.svg';
 
 type FormState = {
     username: string;
     password: string;
 }
 
-type LocationState = {
+/*type LocationState = {
     from: string;
-}
+}*/
 
 const Login = () => {
     const history = useHistory();
@@ -23,13 +24,19 @@ const Login = () => {
 
     const [hasError, setHasError] = useState(false);
 
-    const location = useLocation<LocationState>();
+    const [showpass, setShowpass] = useState(false);
 
-    const { from } = location.state || { from: { pathname: "/" } }; //caso nao existe a rota para onde o user queria ir redireciono para admin
+    //const location = useLocation<LocationState>();
+
+    //const { from } = location.state || { from: { pathname: "/" } }; //caso nao existe a rota para onde o user queria ir redireciono para admin
+
+    function openeyes(){
+        console.log("E ai");
+        setShowpass(!showpass);
+
+    }
 
     const onSubmit = (data: FormState) => {
-        console.log(data);
-        console.log(localStorage.length);
 
         makeLogin(data)
         .then(response => {
@@ -73,20 +80,26 @@ const Login = () => {
                         )}
                                             
                     </div>
-                    <div className="margin-bottom-40">
+                    <div className="margin-bottom-40 password-container">
 
                         <input 
-                            type="password" 
+                            type={showpass ? "text" : "password"} 
                             className={`form-control input-base ${errors.password ? 'is-invalid' : ''} `}
                             placeholder="Senha"
                             name="password" 
                             ref={register({required: "Campo obrigatório", minLength: 5})}
+                            
+                            
                         />
+                        <Eye className="eye-password-image" onClick={openeyes} />
                         {errors.password && (
                             <div className="invalid-feedback d-block">
                                 {errors.password.message}
                             </div>
+                            
                         )}
+
+                        
 
                     </div>
 

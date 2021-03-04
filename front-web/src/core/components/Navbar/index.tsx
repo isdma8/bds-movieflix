@@ -1,4 +1,4 @@
-import { isAuthenticated, logout } from 'core/utils/auth';
+import { logout } from 'core/utils/auth';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './styles.scss';
@@ -25,7 +25,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="col-6">     
-                {!(location.pathname == "/") &&
+                {!(location.pathname === "/") &&
                 <Link to="/" className="nav-logout-text" onClick={handleLogout}>
                     sair
                 </Link>

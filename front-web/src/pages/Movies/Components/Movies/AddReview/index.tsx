@@ -1,4 +1,3 @@
-import ButtonIcon from 'core/components/ButtonIcon';
 import React from 'react';
 import './styles.scss';
 
