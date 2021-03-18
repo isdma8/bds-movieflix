@@ -11,7 +11,7 @@ Ao selecionar um dos filmes disponíveis o utilizador é reecaminhado para a pá
 Caso o utilizador seja utilizador do tipo membro, ele pode ainda adicionar uma nova avaliação ao filme que está a ver.
 
 ## Modelo Conceitual
-![alt text](https://i.imgur.com/8SAB9Fr.png)
+![alt text](https://i.imgur.com/McJqku4.png)
 
 ## Casos de uso
 
@@ -36,7 +36,7 @@ Caso o utilizador seja utilizador do tipo membro, ele pode ainda adicionar uma n
 
 ![alt text](https://i.imgur.com/8SAB9Fr.png)
 ![alt text](https://i.imgur.com/6wR3cpR.png)
-![alt text](https://i.imgur.com/ZMUhSYB.png)
+![alt text](https://i.imgur.com/wXTcf8s.png)
 ![alt text](https://i.imgur.com/fV7U7oe.png)
 
 
@@ -93,9 +93,15 @@ Caso o utilizador seja utilizador do tipo membro, ele pode ainda adicionar uma n
 
 # [Acesso e testes de usabilidade](https://leodelmiro-movieflix.netlify.app/)
 
-Utilizador tipo visitante: bob@gmail.com Pass: 123456
-Utilizador tipo membro: ana@gmail.com Pass: 123456
+```bash
+# Utilizador tipo visitante:
+user: bob@gmail.com
+password: 123456
 
+# Utilizador tipo membro:
+user: ana@gmail.com
+password: 123456
+```
 
 # Como executar o projeto
 
