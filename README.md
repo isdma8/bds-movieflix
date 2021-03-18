@@ -43,6 +43,7 @@ Caso o utilizador seja utilizador do tipo membro, ele pode ainda adicionar uma n
 # Tecnologias
 
 -> Padrão de camadas
+
 -> Web service REST
 
 ## Back end
